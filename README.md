@@ -133,11 +133,10 @@ cols = ceil(n / rows)
 ##  Example Run (Actual Input & Output)
 
 ```text
-PS E:\expense> python route.py
-Enter text: hello are you
+Enter text: hello how are you
 
-Encrypted: helle10X9EB0yoaru81o
-Decrypted: helloareyou
+Encrypted: hellorA8XXXC89ehowauBE0yo
+Decrypted: hellohowareyou
 Status: VALID
 ```
 
@@ -145,8 +144,8 @@ Status: VALID
 
 ###  Explanation of Example
 
-* Input text: `hello are you`
-* Spaces removed → `helloareyou`
+* Input text: `hello how are you`
+* Spaces removed → `hellohowareyou`
 * Hash is generated and appended internally
 * Matrix is formed and read in spiral order → ciphertext
 * Padding (`X`) appears in encrypted output
