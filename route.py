@@ -85,7 +85,6 @@ def decrypt(cipher):
     for i in range(r):
         for j in range(c):
             combined += grid[i][j]
-
     combined = combined.rstrip('X')
     if len(combined) < 8:
         return combined, False
