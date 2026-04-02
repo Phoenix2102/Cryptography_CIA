@@ -157,19 +157,6 @@ Status: VALID
 
 ---
 
-##  Important Note
-
-* Padding is done using `'X'`
-* Removed using:
-
-```
-rstrip('X')
-```
-
- If original text ends with `'X'`, it may be removed unintentionally (known limitation).
-
----
-
 ##  File Structure
 
 ```
