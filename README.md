@@ -130,7 +130,7 @@ cols = ceil(n / rows)
 
 ---
 
-##  Example Run (Actual Input & Output)
+##  Worked Examples (Actual Output)
 
 ```text
 Enter text: hello how are you
@@ -138,24 +138,52 @@ Enter text: hello how are you
 Encrypted: hellorA8XXXC89ehowauBE0yo
 Decrypted: hellohowareyou
 Status: VALID
+
+Enter text: attack now
+
+Encrypted: attao39XXXD1wcknAA67
+Decrypted: attacknow
+Status: VALID
 ```
 
 ---
 
-###  Explanation of Example
+###  Explanation
 
-* Input text: `hello how are you`
-* Spaces removed → `hellohowareyou`
+* Spaces are removed before encryption
 * Hash is generated and appended internally
-* Matrix is formed and read in spiral order → ciphertext
-* Padding (`X`) appears in encrypted output
+* Matrix is filled row-wise and read in spiral order
+* Padding (`X`) may appear in ciphertext
 * During decryption:
 
   * Original text is reconstructed
-  * Hash is recomputed and compared
+  * Hash is recomputed and verified
   * Status is shown as **VALID**
 
 ---
+
+##  Test Script (Round-Trip Validation)
+
+This demonstrates the complete workflow:
+
+**Encrypt → Hash → Decrypt → Verify**
+
+```python
+text = "hello how are you"
+
+cipher = encrypt(text)
+print("Encrypted:", cipher)
+
+decrypted_text, status = decrypt(cipher)
+print("Decrypted:", decrypted_text)
+print("Status:", "VALID" if status else "TAMPERED")
+```
+### Important Notice
+ If the original plaintext or generated hash ends with `'X'`, it may be removed unintentionally.  
+This is a known limitation of the current implementation.
+This issue can be avoided by storing the original message length or using a length-prefix approach instead of relying on padding removal.
+
+
 
 ##  File Structure
 
